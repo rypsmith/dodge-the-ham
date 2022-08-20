@@ -14,6 +14,8 @@ sprites.onOverlap(SpriteKindLegacy.Player, SpriteKindLegacy.Projectile, function
 info.onLifeZero(function () {
     game.over(false)
 })
+let myBPM = 0
+let music_rate = 0
 let mySprite: Sprite = null
 let mySprite3: Sprite = null
 let gameON = true
@@ -172,6 +174,13 @@ game.onUpdateInterval(randint(500, 900), function () {
     mySprite = sprites.create(sprites.food.bigHam, SpriteKindLegacy.Projectile)
     mySprite.setVelocity(0, randint(65, 120))
     mySprite.setPosition(randint(0, 150), -10)
+})
+forever(function () {
+    music_rate += 15
+    myBPM = 120 + music_rate
+    music.playMelody("A C5 B G F A G E ", myBPM)
+    music.playMelody("A C5 B G F A G E ", myBPM)
+    music.playMelody("A C5 B G F A G E ", myBPM)
 })
 forever(function () {
     mySprite3.bottom = 120
