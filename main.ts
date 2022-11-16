@@ -170,10 +170,11 @@ game.onUpdate(function () {
         pause(200)
     }
 })
-game.onUpdateInterval(randint(500, 900), function () {
+game.onUpdateInterval(randint(600, 1200), function () {
     mySprite = sprites.create(sprites.food.bigHam, SpriteKindLegacy.Projectile)
-    mySprite.setVelocity(0, randint(65, 120))
+    mySprite.setVelocity(0, randint(55, 135))
     mySprite.setPosition(randint(0, 150), -10)
+    mySprite.setScale(randint(0.48, 1.75), ScaleAnchor.Middle)
 })
 forever(function () {
     music_rate += 15
