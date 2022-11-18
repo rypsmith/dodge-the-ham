@@ -14,8 +14,16 @@ sprites.onOverlap(SpriteKindLegacy.Player, SpriteKindLegacy.Projectile, function
 info.onLifeZero(function () {
     game.over(false)
 })
+sprites.onOverlap(SpriteKindLegacy.Player, SpriteKindLegacy.Food, function (sprite, otherSprite) {
+    otherSprite.destroy()
+    info.changeLifeBy(1)
+    mySprite3.startEffect(effects.bubbles)
+    pause(1000)
+    effects.clearParticles(mySprite3)
+})
 let myBPM = 0
 let music_rate = 0
+let addLife = 0
 let mySprite: Sprite = null
 let mySprite3: Sprite = null
 let gameON = true
@@ -168,6 +176,15 @@ game.onUpdate(function () {
 game.onUpdate(function () {
     if (mySprite.y > 125) {
         pause(200)
+    }
+})
+game.onUpdateInterval(5000, function () {
+    addLife = randint(0, 100)
+    if (addLife % 9 == 0) {
+        mySprite = sprites.create(assets.image`blueHeart`, SpriteKindLegacy.Food)
+        mySprite.setVelocity(0, 120)
+        mySprite.setPosition(randint(0, 150), -10)
+        mySprite.setScale(0.8, ScaleAnchor.Middle)
     }
 })
 game.onUpdateInterval(randint(600, 1200), function () {
