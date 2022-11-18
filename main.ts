@@ -184,7 +184,7 @@ game.onUpdateInterval(5000, function () {
         mySprite = sprites.create(assets.image`blueHeart`, SpriteKindLegacy.Food)
         mySprite.setVelocity(0, 120)
         mySprite.setPosition(randint(0, 150), -10)
-        mySprite.setScale(0.8, ScaleAnchor.Middle)
+        mySprite.setScale(0.85, ScaleAnchor.Middle)
     }
 })
 game.onUpdateInterval(randint(600, 1200), function () {
