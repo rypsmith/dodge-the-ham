@@ -23,6 +23,7 @@ sprites.onOverlap(SpriteKindLegacy.Player, SpriteKindLegacy.Food, function (spri
 })
 let myBPM = 0
 let music_rate = 0
+let Heart: Sprite = null
 let addLife = 0
 let mySprite: Sprite = null
 let mySprite3: Sprite = null
@@ -181,10 +182,10 @@ game.onUpdate(function () {
 game.onUpdateInterval(5000, function () {
     addLife = randint(0, 100)
     if (addLife % 9 == 0) {
-        mySprite = sprites.create(assets.image`blueHeart`, SpriteKindLegacy.Food)
-        mySprite.setVelocity(0, 120)
-        mySprite.setPosition(randint(0, 150), -10)
-        mySprite.setScale(0.85, ScaleAnchor.Middle)
+        Heart = sprites.create(assets.image`blueHeart`, SpriteKindLegacy.Food)
+        Heart.setVelocity(0, 120)
+        Heart.setPosition(randint(0, 150), -10)
+        Heart.setScale(0.85, ScaleAnchor.Middle)
     }
 })
 game.onUpdateInterval(randint(600, 1200), function () {
@@ -192,6 +193,7 @@ game.onUpdateInterval(randint(600, 1200), function () {
     mySprite.setVelocity(0, randint(55, 135))
     mySprite.setPosition(randint(0, 150), -10)
     mySprite.setScale(randint(0.48, 1.75), ScaleAnchor.Middle)
+    mySprite.setFlag(SpriteFlag.AutoDestroy, true)
 })
 forever(function () {
     music_rate += 15
