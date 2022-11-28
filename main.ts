@@ -25,8 +25,9 @@ let myBPM = 0
 let music_rate = 0
 let Heart: Sprite = null
 let addLife = 0
-let mySprite: Sprite = null
 let mySprite3: Sprite = null
+let mySprite = sprites.create(sprites.food.bigHam, SpriteKindLegacy.Projectile)
+mySprite.destroy()
 let gameON = true
 mySprite3 = sprites.create(img`
     . . . . . f f 4 4 f f . . . . . 
@@ -188,13 +189,6 @@ game.onUpdateInterval(5000, function () {
         Heart.setScale(0.85, ScaleAnchor.Middle)
     }
 })
-game.onUpdateInterval(randint(600, 1200), function () {
-    mySprite = sprites.create(sprites.food.bigHam, SpriteKindLegacy.Projectile)
-    mySprite.setVelocity(0, randint(55, 135))
-    mySprite.setPosition(randint(0, 150), -10)
-    mySprite.setScale(randint(0.48, 1.75), ScaleAnchor.Middle)
-    mySprite.setFlag(SpriteFlag.AutoDestroy, true)
-})
 forever(function () {
     music_rate += 15
     myBPM = 120 + music_rate
@@ -209,5 +203,43 @@ forever(function () {
         mySprite.destroy()
         mySprite3.destroy()
         game.over(false)
+    }
+})
+forever(function () {
+    if (game.runtime() < 10000) {
+        mySprite = sprites.create(sprites.food.bigHam, SpriteKindLegacy.Projectile)
+        mySprite.setVelocity(0, randint(55, 135))
+        mySprite.setPosition(randint(0, 150), -10)
+        mySprite.setScale(randint(0.48, 1.75), ScaleAnchor.Middle)
+        mySprite.setFlag(SpriteFlag.AutoDestroy, true)
+        pause(randint(600, 1200))
+    } else if (game.runtime() > 10000 && game.runtime() < 20000) {
+        mySprite = sprites.create(sprites.food.bigHam, SpriteKindLegacy.Projectile)
+        mySprite.setVelocity(0, randint(55, 135))
+        mySprite.setPosition(randint(0, 150), -10)
+        mySprite.setScale(randint(0.48, 1.75), ScaleAnchor.Middle)
+        mySprite.setFlag(SpriteFlag.AutoDestroy, true)
+        pause(randint(500, 1100))
+    } else if (game.runtime() > 20000 && game.runtime() < 30000) {
+        mySprite = sprites.create(sprites.food.bigHam, SpriteKindLegacy.Projectile)
+        mySprite.setVelocity(0, randint(55, 135))
+        mySprite.setPosition(randint(0, 150), -10)
+        mySprite.setScale(randint(0.48, 1.75), ScaleAnchor.Middle)
+        mySprite.setFlag(SpriteFlag.AutoDestroy, true)
+        pause(randint(400, 1000))
+    } else if (game.runtime() > 30000 && game.runtime() < 40000) {
+        mySprite = sprites.create(sprites.food.bigHam, SpriteKindLegacy.Projectile)
+        mySprite.setVelocity(0, randint(65, 145))
+        mySprite.setPosition(randint(0, 150), -10)
+        mySprite.setScale(randint(0.48, 1.75), ScaleAnchor.Middle)
+        mySprite.setFlag(SpriteFlag.AutoDestroy, true)
+        pause(randint(300, 900))
+    } else {
+        mySprite = sprites.create(sprites.food.bigHam, SpriteKindLegacy.Projectile)
+        mySprite.setVelocity(0, randint(75, 155))
+        mySprite.setPosition(randint(0, 150), -10)
+        mySprite.setScale(randint(0.48, 1.75), ScaleAnchor.Middle)
+        mySprite.setFlag(SpriteFlag.AutoDestroy, true)
+        pause(randint(300, 800))
     }
 })
